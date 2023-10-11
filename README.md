@@ -46,12 +46,53 @@
 
 ## Getting Started
 
-This repository includes files that have ruby classes:
-    -person class
-    -Teacher class
-    -Student class
+To get a local copy up and running follow these simple example steps.
 
- Both Student and teacher classes inherit person class.   
+### Prerequisites
+
+> You need the following tools be installed in your computer:
+
+> - [Git](https://www.linode.com/docs/guides/how-to-install-git-on-linux-mac-and-windows/)
+> - [Ruby](https://github.com/microverseinc/curriculum-ruby/blob/main/simple-ruby/articles/ruby_installation_instructions.md)
+> - IDE
+> - Etc
+
+### Setup
+
+Clone this repository to your desired folder:
+
+```sh
+  cd my-prefered-folder
+  
+  git clone https://github.com/fatmahussein/school-library.git
+
+```
+
+### Install
+
+Install this project with:
+
+```sh
+  cd school-library
+  
+  bundle install
+```
+
+### Usage
+
+To run the project, execute the following command:
+
+```sh
+  ruby main.rb
+```
+
+### Run tests
+
+To run tests, run the following command:
+
+```sh
+  rspec spec/
+``` 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
