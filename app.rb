@@ -57,7 +57,7 @@ class App
   def create_student(name, age)
     print 'Parent permission? [Y/N]: '
     permission_option = gets.chomp.downcase
-    student = Student.new(name, age, parent_permission: permission_option == 'y')
+    student = Student.new(age, name, parent_permission: permission_option == 'y')
     @people << student
     puts "Student created successfully. ID is #{student.id}"
   end
@@ -92,18 +92,39 @@ class App
       puts 'Enter the number of the book you want: '
       list_books
       book_number = gets.chomp.to_i - 1
-      puts 'Enter your ID: '
+      puts 'Enter the number of the person: '
       list_people
-      person_id = gets.chomp.to_i
-      individual = @people.find { |person| person.id == person_id }
-
+      person_number = gets.chomp.to_i - 1
+      if person_number.negative? || person_number >= @people.length
+        puts 'Invalid person number. Please enter a valid number.'
+        return
+      end
       print 'Enter the date [yyyy-mm-dd]: '
       date = gets.chomp.to_s
-      rental = Rental.new(date, @books[book_number], individual)
+      rental = Rental.new(date, @books[book_number], @people[person_number])
       @rentals << rental
       puts 'Book rented successfully.'
     end
   end
+  # def create_rental
+  #   if @books.empty? || @people.empty?
+  #     puts 'Nothing to see here.'
+  #   else
+  #     puts 'Select a book from the following list by number: '
+  #     list_books
+  #     book_number = gets.chomp.to_i - 1
+  #     puts 'Select a person from the following list by number: '
+  #     list_people
+  #     person_id = gets.chomp.to_i
+  #     individual = @people.find { |person| person.id == person_id }
+
+  #     print 'Enter the date [yyyy-mm-dd]: '
+  #     date = gets.chomp.to_s
+  #     rental = Rental.new(date, @books[book_number], individual)
+  #     @rentals << rental
+  #     puts 'Book rented successfully.'
+  #   end
+  # end
 
   def list_all_rentals
     if @rentals.empty?
