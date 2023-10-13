@@ -5,16 +5,6 @@ require_relative 'student'
 require_relative 'teacher'
 
 class App
-  MENU_OPTIONS = {
-    '1' => :list_books,
-    '2' => :list_people,
-    '3' => :create_person,
-    '4' => :create_book,
-    '5' => :create_rental,
-    '6' => :list_all_rentals,
-    '7' => :exit_program
-  }.freeze
-
   def initialize
     @books = []
     @rentals = []
@@ -65,11 +55,9 @@ class App
   end
 
   def create_student(name, age)
-    print 'Grade: '
-    grade = gets.chomp
     print 'Parent permission? [Y/N]: '
     permission_option = gets.chomp.downcase
-    student = Student.new(grade, name, age, parent_permission: permission_option == 'y')
+    student = Student.new(name, age, parent_permission: permission_option == 'y')
     @people << student
     puts "Student created successfully. ID is #{student.id}"
   end
@@ -136,23 +124,5 @@ class App
         end
       end
     end
-  end
-
-  def choose_option
-    puts 'Please choose an option by selecting a number:'
-    MENU_OPTIONS.each { |key, value| puts "#{key}. #{value.to_s.tr('_', ' ')}" }
-
-    option = gets.chomp
-
-    if MENU_OPTIONS.include?(option)
-      send(MENU_OPTIONS[option])
-    else
-      puts 'Invalid input. Try again.'
-    end
-  end
-
-  def exit_program
-    puts 'Thank you for using the app.'
-    exit!
   end
 end
