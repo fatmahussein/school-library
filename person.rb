@@ -42,7 +42,3 @@ capitalized_person = Capitalizedecorator.new(person)
 capitalized_person.correct_name
 capitalized_trimmed_person = Trimmerdecorator.new(capitalized_person)
 capitalized_trimmed_person.correct_name
-
-book = Book.new('Atomic Habits', 'James Clear')
-rental_person = Rental.new(person: person, book: book, date: '2023')
-p rental_person
