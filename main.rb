@@ -1,3 +1,4 @@
+require 'pry'
 require_relative 'app'
 
 puts 'Welcome to our school library'
@@ -24,15 +25,18 @@ def choose_option
     puts 'Invalid input. Try again.'
   end
 end
+ 
+
 
 def exit_program
   puts 'Thank you for using the app.'
   exit!
+ 
 end
 
 def main
   app = App.new
   app.start
 end
-
+binding.pry
 main
